@@ -95,6 +95,25 @@ lvim.builtin.treesitter.auto_install = true
 lvim.plugins = {
   { "lunarvim/colorschemes" },
   { "rebelot/kanagawa.nvim" },
+  { "Mxrcon/nextflow-vim" },
+  { "lunarvim/colorschemes" },
+  { "folke/tokyonight.nvim" },
+  { "sainnhe/sonokai" },
+  { "arcticicestudio/nord-vim" },
+  { "mfussenegger/nvim-jdtls" },
+  { "TovarishFin/vim-solidity" },
+  { "Mofiqul/vscode.nvim" },
+  { "kvrohit/substrata.nvim" },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
