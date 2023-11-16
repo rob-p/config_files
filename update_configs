@@ -14,12 +14,12 @@ def main(args):
     if args.lunarvim or args.all:   
       logging.info(f"Downloading lunarvim config")
       urllib.request.urlretrieve("https://raw.githubusercontent.com/rob-p/config_files/main/lvim/config.lua", f"{tmpdir}/config.lua")
-      logging.info(f"Copying lunarvim config from {tmpdir}/config.lua => ~/.config/lvim/config.lua")
+      logging.info(f"Copying lunarvim config from {tmpdir}/config.lua => {config_dir}/lvim/config.lua")
       shutil.copy2(f"{tmpdir}/config.lua", f"{config_dir}/lvim/config.lua")
     if args.wezterm or args.all:
       logging.info(f"Downloading wezterm config")
       urllib.request.urlretrieve("https://raw.githubusercontent.com/rob-p/config_files/main/wezterm/wezterm.lua", f"{tmpdir}/wezterm.lua")
-      logging.info(f"Copying wezterm config from {tmpdir}/wezterm.lua => ~/.config/wezterm/wezterm.lua")
+      logging.info(f"Copying wezterm config from {tmpdir}/wezterm.lua => {config_dir}/wezterm/wezterm.lua")
       shutil.copy2(f"{tmpdir}/wezterm.lua", f"{config_dir}/wezterm/wezterm.lua")
 
 if __name__ == "__main__":
