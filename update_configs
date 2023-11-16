@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import argparse
+import urllib.request
+import tempfile
+import shutil
+import logging
+import os
+
+def main(args):
+
+  with tempfile.TemporaryDirectory() as tmpdir:
+    config_dir = os.path.expanduser('~/.config')
+    if args.lunarvim or args.all:   
+      logging.info(f"Downloading lunarvim config")
+      urllib.request.urlretrieve("https://raw.githubusercontent.com/rob-p/config_files/main/lvim/config.lua", f"{tmpdir}/config.lua")
+      logging.info(f"Copying lunarvim config from {tmpdir}/config.lua => ~/.config/lvim/config.lua")
+      shutil.copy2(f"{tmpdir}/config.lua", f"{config_dir}/lvim/config.lua")
+    if args.wezterm or args.all:
+      logging.info(f"Downloading wezterm config")
+      urllib.request.urlretrieve("https://raw.githubusercontent.com/rob-p/config_files/main/wezterm/wezterm.lua", f"{tmpdir}/wezterm.lua")
+      logging.info(f"Copying wezterm config from {tmpdir}/wezterm.lua => ~/.config/wezterm/wezterm.lua")
+      shutil.copy2(f"{tmpdir}/wezterm.lua", f"{config_dir}/wezterm/wezterm.lua")
+
+if __name__ == "__main__":
+  logging.basicConfig(level=logging.DEBUG)
+  parser = argparse.ArgumentParser(
+                    prog='update_configs',
+                    description='Update shared configuration files')
+  parser.add_argument('--lunarvim', action='store_true')
+  parser.add_argument('--wezterm', action='store_true')
+  parser.add_argument('-a', '--all', action='store_true')
+  args = parser.parse_args()
+  main(args)
